@@ -4,9 +4,29 @@ services:
 
     mysqlserver:
         build: 
-            context: ../services/mysql_5.5/rpi2
+            context: ../services/${MY_PLATFORM}/mysql_5.5
             dockerfile: Dockerfile
         ports:
         - "3306:3306"
         volumes:
-        -  ${MY_MYSQL_DATA_VOLUME}:/var/lib/mysql
+        - ${MY_MYSQL_DATA_VOLUME}:/var/lib/mysql
+
+    webserver:
+        build:
+            context: ../services/${MY_PLATFORM}/apache2
+            dockerfile: Dockerfile
+        ports:
+        - "80:80"
+        volumes:
+        - ${MY_WEB_DATA_VOLUME}:/var/www
+
+    ftpserver:
+        build:
+            context: ../services/${MY_PLATFORM}/vsftp
+            dockerfile: Dockerfile
+        ports:
+        - "21:21"
+        volumes:
+        - ${MY_FTP_DATA_VOLUME}:/var/www
+
+
