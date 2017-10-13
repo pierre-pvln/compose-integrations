@@ -1,2 +1,2 @@
 
-docker compose files for various integrations (webservers etc)
+docker compose yaml configuration files for various application stacks and integrations (webservers etc)
