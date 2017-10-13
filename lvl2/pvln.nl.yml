@@ -9,13 +9,13 @@ version: "2"
 services: 
     baseline:
         build: 
-            context: ../services/${MY_PLATFORM}/baseline
+            context: ../../services/${MY_PLATFORM}/baseline
             dockerfile: Dockerfile
         image: pvln/${MY_PLATFORM}-baseline:1.0
 
     mysqlserver:
         build: 
-            context: ../services/${MY_PLATFORM}/mysql_5.5
+            context: ../../services/${MY_PLATFORM}/mysql_5.5
             dockerfile: Dockerfile
         ports:
         - "3306:3306"
@@ -24,7 +24,7 @@ services:
 
     webserver:
         build:
-            context: ../services/${MY_PLATFORM}/apache2
+            context: ../../services/${MY_PLATFORM}/apache2
             dockerfile: Dockerfile
         ports:
         - "80:80"
@@ -33,7 +33,7 @@ services:
 
 #    ftpserver:
 #        build:
-#            context: ../services/${MY_PLATFORM}/vsftp
+#            context: ../../services/${MY_PLATFORM}/vsftp
 #            dockerfile: Dockerfile
 #        ports:
 #        - "21:21"
