@@ -10,7 +10,7 @@ services:
 
     mysqlserver:
         build: 
-            context: ../services/${MY_PLATFORM}/mysql_5.5
+            context: ../../services/${MY_PLATFORM}/mysql_5.5
             dockerfile: Dockerfile
         ports:
         - "3306:3306"
