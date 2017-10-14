@@ -1,0 +1,19 @@
+#
+# purpose:  Docker-compose yaml file for test apache2 server
+# author:   Pierre Veelen <pierre@pvln.nl>
+# version:  2017-10-01 initial version
+#
+
+version: "2"
+
+services: 
+
+    apache2server:
+        build: 
+            context: ../../services/${MY_PLATFORM}/apache2
+            dockerfile: Dockerfile
+        ports:
+        - "80:80"
+        volumes:
+        - ${MY_WEB_DATA_VOLUME}:var/www/{$MY_APACHE2_SITENAME}
+
