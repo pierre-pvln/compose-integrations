@@ -1,0 +1,14 @@
+#
+# purpose:  Docker-compose yaml file for baseline image
+# author:   Pierre Veelen <pierre@pvln.nl>
+# version:  2017-10-01 initial version
+#
+
+version: "2"
+
+services: 
+    baseline:
+       build: 
+            context: ../../services/${MY_PLATFORM}/baseline
+            dockerfile: Dockerfile
+        image: pvln/${MY_PLATFORM}-baseline:1.0
