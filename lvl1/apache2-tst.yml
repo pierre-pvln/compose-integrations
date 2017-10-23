@@ -17,8 +17,8 @@ services:
         - "80:80"
 
         volumes:
-        - ${MY_WEB_DATA_VOLUME}:/var/www/${MY_APACHE2_SITENAME}
+        - ${MY_WEB_DATA_VOLUME}:/var/www/${MY_APACHE2_WEBFOLDER}
 
         environment:
-        - MY_APACHE2_WEBFOLDER=${MY_APACHE2_SITENAME}
+        - MY_WEBFOLDER=${MY_APACHE2_WEBFOLDER}
 
