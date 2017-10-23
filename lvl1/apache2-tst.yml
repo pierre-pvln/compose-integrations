@@ -12,7 +12,13 @@ services:
         build: 
             context: ../../services/${MY_PLATFORM}/apache2
             dockerfile: Dockerfile
+
         ports:
         - "80:80"
+
         volumes:
         - ${MY_WEB_DATA_VOLUME}:/var/www/${MY_APACHE2_SITENAME}
+
+        environment:
+        - MY_APACHE2_WEBFOLDER=${MY_APACHE2_SITENAME}
+
