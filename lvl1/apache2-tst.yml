@@ -12,7 +12,9 @@ services:
         build: 
             context: ../../services/${MY_PLATFORM}/apache2
             dockerfile: Dockerfile
-
+            
+        image: pvln/${MY_PLATFORM}-apache2:1.0
+        
         ports:
         - "80:80"
 

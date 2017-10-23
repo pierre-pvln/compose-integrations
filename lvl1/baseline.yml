@@ -12,4 +12,5 @@ services:
        build: 
            context: ../../services/${MY_PLATFORM}/baseline
            dockerfile: Dockerfile
+           
        image: pvln/${MY_PLATFORM}-baseline:1.0
