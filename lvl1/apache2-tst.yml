@@ -9,18 +9,29 @@ version: "2"
 services: 
 
     apache2server:
+        #what to build and where to find it
+        #
         build: 
             context: ../../services/${MY_PLATFORM}/apache2
             dockerfile: Dockerfile
-            
+
+        #how to name and tag the image
+        #  
         image: pvln/${MY_PLATFORM}-apache2:1.0
         
         ports:
         - "80:80"
 
         volumes:
-        - ${MY_WEB_DATA_VOLUME}:/var/www/${MY_APACHE2_WEBFOLDER}
+        - ${MY_WEB_DATA_VOLUME}:/var/www/${APACHE_WEBFOLDER}
 
+        # values to pass to the container as environment variable
+        # only available when container is run, not when container is build
+        #        
         environment:
-        - MY_WEBFOLDER=${MY_APACHE2_WEBFOLDER}
-
+        # set SOME_DUMMY to a variable from the compose host
+        - SOME_DUMMY=${APACHE_WEBFOLDER}
+        # set to a specific value
+        - ANOTHER_DUMMY="What a dummy"
+        # resolved to their values on the machine Compose is running on
+        - MY_WEB_DAYA_VOLUME
