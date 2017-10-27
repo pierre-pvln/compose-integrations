@@ -22,6 +22,8 @@ services:
         ports:
         - "80:80"
 
+        # volume on host : volume in container
+        #
         volumes:
         - ${MY_WEB_DATA_VOLUME}:/var/www/${APACHE_WEBFOLDER}
 
