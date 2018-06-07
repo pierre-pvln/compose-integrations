@@ -1,0 +1,44 @@
+#
+# purpose:  Docker-compose yaml file for test website voluntas.nl
+# author:   Pierre Veelen <pierre@pvln.nl>
+# version:  2017-10-01 initial version
+#           2018-0-06
+#
+
+version: "2"
+
+services: 
+#    baseline:
+#       build: 
+#            context: ../../services/${MY_PLATFORM}/baseline
+#            dockerfile: Dockerfile
+#        image: pvln/${MY_PLATFORM}-baseline:1.0
+
+    mysqlserver:
+        build: 
+            context: ../../services/${MY_PLATFORM}/mysql_5.5
+            dockerfile: Dockerfile
+        ports:
+        - "3306:3306"
+        volumes:
+        - ${MY_MYSQL_DATA_VOLUME}:/var/lib/mysql
+
+    webserver:
+        build:
+            context: ../../services/${MY_PLATFORM}/apache2
+            dockerfile: Dockerfile
+        ports:
+        - "80:80"
+        volumes:
+        - ${MY_WEB_DATA_VOLUME}:/var/www
+
+#    ftpserver:
+#        build:
+#            context: ../../services/${MY_PLATFORM}/vsftp
+#            dockerfile: Dockerfile
+#        ports:
+#        - "21:21"
+#        volumes:
+#        - ${MY_FTP_DATA_VOLUME}:/var/www
+
+
