@@ -12,12 +12,12 @@ services:
         #what to build and where to find it
         #
         build: 
-            context: ../../services/${MY_PLATFORM}/php5
+            context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: Dockerfile
 
         #how to name and tag the image
         #  
-        image: pvln/${MY_PLATFORM}-php5:1.0
+        image: ${BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
         
         #how to connect to outside
         #

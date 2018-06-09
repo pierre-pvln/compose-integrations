@@ -2,6 +2,7 @@
 # purpose:  Docker-compose yaml file for test apache2 server
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
+#           2018-06-09 added additional variables
 #
 
 version: "2"
@@ -12,12 +13,12 @@ services:
         #what to build and where to find it
         #
         build: 
-            context: ../../services/${MY_PLATFORM}/apache2
+            context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: Dockerfile
 
         #how to name and tag the image
         #  
-        image: pvln/${MY_PLATFORM}-apache2:1.0
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
         
         ports:
         - "80:80"
