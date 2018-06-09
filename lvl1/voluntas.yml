@@ -1,0 +1,40 @@
+#
+# purpose:  Docker-compose yaml file for voluntas test server
+# author:   Pierre Veelen <pierre@pvln.nl>
+# version:  2017-10-01 initial version
+#
+
+version: "2"
+
+services: 
+
+    webserver:
+        #what to build and where to find it
+        #
+        build: 
+            context: ../../services/${MY_PLATFORM}/voluntas
+            dockerfile: Dockerfile
+
+        #how to name and tag the image
+        #  
+        image: pvln/${MY_PLATFORM}-voluntas:1.0
+        
+        ports:
+        - "80:80"
+
+        # volume on host : volume in container
+        #
+        volumes:
+        - ${MY_WEB_DATA_VOLUME}:/var/www/html
+
+        # values to pass to the container as environment variable
+        # only available when container is run, not when container is build
+        #        
+        environment:
+        # set SOME_DUMMY to a variable from the compose host
+        - SOME_DUMMY=${MY_PLATFORM}
+        # set to a specific value
+        - ANOTHER_DUMMY='What a dummy single quotes'
+        - AND_ANOTHER="What a dummy double quotes"
+        # resolved to their values on the machine Compose is running on
+        - MY_WEB_DATA_VOLUME
