@@ -11,7 +11,7 @@ services:
 #       build: 
 #            context: ../../services/${MY_PLATFORM}/baseline
 #            dockerfile: Dockerfile
-#        image: pvln/${MY_PLATFORM}-baseline:1.0
+#        image: ${MY_BUILDER}/${MY_PLATFORM}-baseline:1.0
 
     mysqlserver:
         build: 
