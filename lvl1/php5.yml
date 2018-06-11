@@ -17,7 +17,7 @@ services:
 
         #how to name and tag the image
         #  
-        image: ${BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
         
         #how to connect to outside
         #
