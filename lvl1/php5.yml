@@ -21,7 +21,7 @@ services:
         
         #how to connect to outside
         #
-        ports:
+        #ports:
         
         # volume on host : volume in container
         #
