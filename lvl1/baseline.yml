@@ -19,4 +19,4 @@ services:
            
         #how to name and tag the image
         #  
-        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY-LEVEL}-${MY_CONTAINER_NAME}:1.0
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
