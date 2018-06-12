@@ -19,9 +19,13 @@ services:
             dockerfile: Dockerfile
 
         #how to name and tag the image
-        #  
-        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
+        #
+        #for example pvln/rpi3-lvl1-apache2:1.0
+        #         
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY-LEVEL}-${MY_CONTAINER_NAME}:1.0
         
+        # port on host : port on container
+        #
         ports:
         - "80:80"
 

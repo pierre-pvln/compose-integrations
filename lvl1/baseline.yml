@@ -11,8 +11,12 @@ version: "2"
 services: 
 
     baseline:
-       build: 
+        #what to build and where to find it
+        #
+        build:
            context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
            dockerfile: Dockerfile
            
-       image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_CONTAINER_NAME}:1.0
+        #how to name and tag the image
+        #  
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY-LEVEL}-${MY_CONTAINER_NAME}:1.0
