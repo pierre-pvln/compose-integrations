@@ -23,8 +23,8 @@ services:
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
         
         # port on host : port on container
-        ##ports:
-        ##- "80:80"
+        ports:
+        - "80:80"
         
         # volume on host : volume in container
         #
