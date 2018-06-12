@@ -1,8 +1,10 @@
 #
+# file:     apache2.yml
 # purpose:  Docker-compose yaml file for test apache2 server
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
+#           2018-06-12 added log volume
 #
 
 version: "2"
@@ -27,6 +29,7 @@ services:
         #
         volumes:
         - ${MY_WEB_DATA_VOLUME}:/var/www/html
+        - ${MY_WEB_LOG_VOLUME}:/var/log/apache2
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
