@@ -10,6 +10,12 @@ version: "2"
 services: 
 
     php5service:
+
+        # builds on an other service
+        extends:
+            service: apache2server
+            file: ./apache2.yml
+
         #what to build and where to find it
         #
         build: 
@@ -27,14 +33,15 @@ services:
         # ATTENTION: if ports are defined in lower level containers, 
         #            they have to be defined again in this container
         #
-        ports:
-        - "80:80"    # for apache2 layer
+        ##ports:
+        ##- "80:80"    # for apache2 layer
         
         # volume on host : volume in container
         #
-        volumes:
-        - ${MY_WEB_DATA_VOLUME}:/var/www/html
-        - ${MY_WEB_LOG_VOLUME}:/var/log/apache2
+        #volumes:
+        ##- ${MY_WEB_DATA_VOLUME}:/var/www/html
+        ##- ${MY_WEB_LOG_VOLUME}:/var/log/apache2
+
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
