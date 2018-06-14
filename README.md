@@ -1,8 +1,8 @@
 Docker compose yaml configuration files for various application stacks and integrations (webservers etc)
 
-- Level 1 = Single service in 1 container
-- Level 2 = Multiple services in 1 container or multiple containers creating 1 service
-- Level 3 = Containers spread over network
+Level 1 = Single service in 1 container<br>
+Level 2 = Multiple services in 1 container or multiple containers creating 1 service<br>
+Level 3 = Containers spread over network
 
 Below folder structure should be present on the host which runs docker:
 ```
