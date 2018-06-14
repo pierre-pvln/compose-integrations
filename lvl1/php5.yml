@@ -20,7 +20,8 @@ services:
         #
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
-            dockerfile: Dockerfile
+            #dockerfile: Dockerfile #generic version 
+            dockerfiel:	Dockerfile-clean #clenaup version
 
         #how to name and tag the image
         #
