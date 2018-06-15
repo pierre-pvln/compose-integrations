@@ -21,8 +21,9 @@ services:
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             #dockerfile: Dockerfile #generic version 
-            dockerfile:	Dockerfile-clean #clenaup version
-
+            #dockerfile:	Dockerfile-clean #clenaup version
+            dockerfile:	Dockerfile-php5 #version wih php5 settings only
+            
         #how to name and tag the image
         #
         #for example pvln/rpi3-lvl1-php5:1.0
