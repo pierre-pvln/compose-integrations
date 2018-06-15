@@ -10,6 +10,7 @@
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
+#           ${MY_BUILDER}
 #           ${MY_WEB_DATA_VOLUME}
 #           ${MY_WEB_LOG_VOLUME}
 
