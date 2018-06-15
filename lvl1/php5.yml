@@ -11,10 +11,10 @@ services:
 
     php5service:
 
-        # builds on an other service
-        extends:
-            service: apache2server
-            file: ./apache2.yml
+        ### builds on an other service
+        ##extends:
+        ##    service: apache2server
+        ##    file: ./apache2.yml
 
         #what to build and where to find it
         #
