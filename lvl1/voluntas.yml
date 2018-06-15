@@ -5,6 +5,11 @@
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
 #
+# required: ${MY_PLATFORM}
+#           ${MY_CONTAINER_NAME}
+#           ${MY_DOCKERFILE}
+#           ${MY_LEVEL}
+#           ${MY_BUILDER}
 
 version: "2"
 
@@ -15,7 +20,7 @@ services:
         #
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
-            dockerfile: Dockerfile
+            dockerfile: ${MY_DOCKERFILE}
 
         #how to name and tag the image 
         #
