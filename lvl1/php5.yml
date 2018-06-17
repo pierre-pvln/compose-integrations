@@ -10,8 +10,10 @@
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
 #           ${MY_BUILDER}
+#           ${MY_PHP5_LOG_VOLUME}
+#           ${MY_PHP5_DATA_VOLUME}
 
-version: "2"
+version: "3"
 
 services: 
 
@@ -50,8 +52,8 @@ services:
         #
         volumes:
         # for apache2 layer
-        - APACHE2_DATA_VOLUME:/var/www/html
-        - APACHE2_LOG_VOLUME:/var/log/apache2
+        - PHP5_DATA_VOLUME:/var/www/html
+        - PHP5_LOG_VOLUME:/var/log/apache2
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
@@ -66,15 +68,15 @@ services:
         ##- MY_WEB_DATA_VOLUME
 
  
- volumes:
-    APACHE2_DATA_VOLUME:
+volumes:
+    PHP5_DATA_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_WEB_DATA_VOLUME}
+            device: ${MY_PHP5_DATA_VOLUME}
             o: bind
-    APACHE2_LOG_VOLUME:
+    PHP5_LOG_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_WEB_LOG_VOLUME}
+            device: ${MY_PHP5_LOG_VOLUME}
             o: bind
             
