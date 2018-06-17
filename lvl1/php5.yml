@@ -41,14 +41,14 @@ services:
         # ATTENTION: if ports are defined in lower level containers, 
         #            they have to be defined again in this container
         #
-        ##ports:
-        ##- "80:80"    # for apache2 layer
+        ports:
+        - "80:80"    # for apache2 layer
         
         # volume on host : volume in container
         #
-        #volumes:
-        ##- ${MY_WEB_DATA_VOLUME}:/var/www/html
-        ##- ${MY_WEB_LOG_VOLUME}:/var/log/apache2
+        volumes:
+        - APACHE2_DATA_VOLUME:/var/www/html
+        - APACHE2_LOG_VOLUME:/var/log/apache2
 
 
         # values to pass to the container as environment variable
@@ -62,3 +62,16 @@ services:
         ##- AND_ANOTHER="What a dummy double quotes"
         ### resolved to their values on the machine Compose is running on
         ##- MY_WEB_DATA_VOLUME
+
+ 
+ volumes:
+    APACHE2_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_DATA_VOLUME}
+            o: bind
+    APACHE2_LOG_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_LOG_VOLUME}
+            o: bind  
