@@ -28,7 +28,7 @@ services:
             #dockerfile: Dockerfile #generic version 
             #dockerfile:	Dockerfile-clean #clenaup version
             ##version wih php5 settings only
-            dockerfile:	${MY_DOCKERFILE}
+            dockerfile: ${MY_DOCKERFILE}
             
         #how to name and tag the image
         #
