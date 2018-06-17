@@ -6,7 +6,8 @@
 #           2018-06-09 added additional variables
 #           2018-06-12 added log volume
 #
-# required: ${MY_PLATFORM}
+# required environment variables: 
+#           ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
