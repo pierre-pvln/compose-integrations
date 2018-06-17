@@ -1,5 +1,5 @@
 #
-# file:     mysql-tst.yml
+# file:     mysql55.yml
 # purpose:  Docker-compose yaml file for test mysql server
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
@@ -11,7 +11,7 @@
 #           ${MY_LEVEL}
 #           ${MY_MYSQL_DATA_VOLUME}
 
-version: "2"
+version: "3"
 
 services: 
 
@@ -36,4 +36,11 @@ services:
         # volume on host : volume in container
         #
         volumes:
-        - ${MY_MYSQL_DATA_VOLUME}:/var/lib/mysql
+        - MYSQL_DATA_VOLUME:/var/lib/mysql
+
+volumes:
+    MYSQL_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_MYSQL_DATA_VOLUME}
+            o: bind

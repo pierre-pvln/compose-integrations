@@ -15,7 +15,7 @@
 #           ${MY_WEB_DATA_VOLUME}
 #           ${MY_WEB_LOG_VOLUME}
 
-version: "2"
+version: "3"
 
 services: 
 
