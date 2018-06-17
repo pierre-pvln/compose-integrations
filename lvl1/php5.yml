@@ -4,7 +4,8 @@
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #
-# required: ${MY_PLATFORM}
+# required environment variables: 
+#           ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
@@ -42,14 +43,15 @@ services:
         #            they have to be defined again in this container
         #
         ports:
-        - "80:80"    # for apache2 layer
+        # for apache2 layer
+        - "80:80"    
         
         # volume on host : volume in container
         #
         volumes:
+        # for apache2 layer
         - APACHE2_DATA_VOLUME:/var/www/html
         - APACHE2_LOG_VOLUME:/var/log/apache2
-
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
@@ -74,4 +76,5 @@ services:
         driver_opts:
             type: none 
             device: ${MY_WEB_LOG_VOLUME}
-            o: bind  
+            o: bind
+            
