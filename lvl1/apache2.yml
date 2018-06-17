@@ -39,8 +39,8 @@ services:
         # volume on host : volume in container
         #
         volumes:
-        - MY_WEB_DATA_VOLUME:/var/www/html
-        - MY_WEB_LOG_VOLUME:/var/log/apache2
+        - APACHE2_DATA_VOLUME:/var/www/html
+        - APACHE2_LOG_VOLUME:/var/log/apache2
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
@@ -55,12 +55,12 @@ services:
         - MY_WEB_DATA_VOLUME
 
 volumes:
-    MY_WEB_DATA_VOLUME:
+    APACHE2_DATA_VOLUME:
         driver_opts:
             type: none 
             device: ${MY_WEB_DATA_VOLUME}
             o: bind
-    MY_WEB_LOG_VOLUME:
+    APACHE2_LOG_VOLUME:
         driver_opts:
             type: none 
             device: ${MY_WEB_LOG_VOLUME}
