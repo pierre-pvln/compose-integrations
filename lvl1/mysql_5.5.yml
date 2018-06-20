@@ -28,16 +28,33 @@ services:
         #        
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
 
+        # restart the container under any circumstance
+        #
+        restart: always        
+
         # port on host : port on container
         #        
         ports:
+
+        # Apache2
+        - "80:80"
+
+        # MySQL
         - "3306:3306"
+
 
         # volume on host : volume in container
         #
         volumes:
+
+        # Apache2
+        - MYSQL_WEB_DATA_VOLUME:/var/www/html
+        - MYSQL_WEB_LOG_VOLUME:/var/log/apache2
+
+        # MySQL
         - MYSQL_DATA_VOLUME:/var/lib/mysql
         
+
         # the MySQL image uses these to create database and users
         #
         environment: 
@@ -47,6 +64,16 @@ services:
         - MYSQL_PASSWORD=${MY_SQL_USER_PW}
           
 volumes:
+    MYSQL_WEB_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_DATA_VOLUME}
+            o: bind
+    MYSQL_WEB_LOG_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_LOG_VOLUME}
+            o: bind
     MYSQL_DATA_VOLUME:
         driver_opts:
             type: none 
