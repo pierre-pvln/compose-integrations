@@ -37,7 +37,15 @@ services:
         #
         volumes:
         - MYSQL_DATA_VOLUME:/var/lib/mysql
-
+        
+        # the MySQL image uses these to create database and users
+        #
+        environment: 
+        - MYSQL_ROOT_PASSWORD=${MY_SQL_ROOT_PW}
+        - MYSQL_DATABASE=${MY_SQL_DATABASE}
+        - MYSQL_USER=${MY_SQL_USER}
+        - MYSQL_PASSWORD=${MY_SQL_USER_PW}
+          
 volumes:
     MYSQL_DATA_VOLUME:
         driver_opts:
