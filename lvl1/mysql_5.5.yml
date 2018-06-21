@@ -64,6 +64,8 @@ services:
         - MYSQL_PASSWORD=${MY_SQL_USER_PW}
           
 volumes:
+    # volume with persistent data
+    #
     MYSQL_WEB_DATA_VOLUME:
         driver_opts:
             type: none 
