@@ -25,7 +25,7 @@ services:
             
         #how to name and tag the image
         #
-        #for example pvln/rpi3-lvl1-mysql:1.0
+        #for example pvln/rpi3-lvl1-voluntas:1.0
         #        
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
 
