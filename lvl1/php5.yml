@@ -19,18 +19,10 @@ services:
 
     php5service:
 
-        ### builds on an other service
-        ##extends:
-        ##    service: apache2server
-        ##    file: ./apache2.yml
-
         #what to build and where to find it
         #
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
-            #dockerfile: Dockerfile #generic version 
-            #dockerfile:	Dockerfile-clean #clenaup version
-            ##version wih php5 settings only
             dockerfile: ${MY_DOCKERFILE}
             
         #how to name and tag the image
@@ -58,16 +50,8 @@ services:
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
         #        
-        ##environment:
-        ### set SOME_DUMMY to a variable from the compose host
-        ##- SOME_DUMMY=${MY_PLATFORM}
-        ### set to a specific value
-        ##- ANOTHER_DUMMY='What a dummy single quotes'
-        ##- AND_ANOTHER="What a dummy double quotes"
-        ### resolved to their values on the machine Compose is running on
-        ##- MY_WEB_DATA_VOLUME
+        #environment:
 
- 
 volumes:
     PHP5_DATA_VOLUME:
         driver_opts:
@@ -79,4 +63,3 @@ volumes:
             type: none 
             device: ${MY_PHP5_LOG_VOLUME}
             o: bind
-            
