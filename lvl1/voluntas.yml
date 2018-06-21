@@ -8,44 +8,76 @@
 # required: ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
-#           ${MY_LEVEL}
 #           ${MY_BUILDER}
+#           ${MY_LEVEL}
+#           ${MY_MYSQL_DATA_VOLUME}
 
-version: "2"
+version: "3"
 
 services: 
 
     webserver:
         #what to build and where to find it
-        #
+        #    
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: ${MY_DOCKERFILE}
-
-        #how to name and tag the image 
+            
+        #how to name and tag the image
         #
-        #for example pvln/rpi3-lvl1-voluntas:1.0
-        #              
+        #for example pvln/rpi3-lvl1-mysql:1.0
+        #        
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
 
+        # restart the container under any circumstance
+        #
+        restart: always        
+
         # port on host : port on container
-        #          
-        ##ports:
-        ##- "80:80"
+        #        
+        ports:
+
+        # Apache2
+        - "80:80"
+
+        # MySQL
+        - "3306:3306"
 
         # volume on host : volume in container
         #
-        ##volumes:
-        ##- ${MY_WEB_DATA_VOLUME}:/var/www/html
+        volumes:
 
-        # values to pass to the container as environment variable
-        # only available when container is run, not when container is build
-        #        
-        environment:
-        # set SOME_DUMMY to a variable from the compose host
-        - SOME_DUMMY=${MY_PLATFORM}
-        # set to a specific value
-        - ANOTHER_DUMMY='What a dummy single quotes'
-        - AND_ANOTHER="What a dummy double quotes"
-        # resolved to their values on the machine Compose is running on
-        - MY_WEB_DATA_VOLUME
+        # Apache2
+        - VOLUNTAS_WEB_DATA_VOLUME:/var/www/html
+        - VOLUNTAS_WEB_LOG_VOLUME:/var/log/apache2
+
+        # MySQL
+        - VOLUNTAS_MYSQL_DATA_VOLUME:/var/lib/mysql
+        
+
+        # the MySQL image uses these to create database and users
+        #
+        environment: 
+        - MYSQL_ROOT_PASSWORD=${MY_SQL_ROOT_PW}
+        - MYSQL_DATABASE=${MY_SQL_DATABASE}
+        - MYSQL_USER=${MY_SQL_USER}
+        - MYSQL_PASSWORD=${MY_SQL_USER_PW}
+          
+volumes:
+    # volume with persistent data
+    #
+    VOLUNTAS_WEB_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_DATA_VOLUME}
+            o: bind
+    VOLUNTAS_WEB_LOG_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_LOG_VOLUME}
+            o: bind
+    VOLUNTAS_MYSQL_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_MYSQL_DATA_VOLUME}
+            o: bind
