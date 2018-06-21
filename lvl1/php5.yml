@@ -58,10 +58,10 @@ volumes:
     PHP5_DATA_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_PHP5_DATA_VOLUME}
+            device: ${MY_WEB_DATA_VOLUME}
             o: bind
     PHP5_LOG_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_PHP5_LOG_VOLUME}
+            device: ${MY_WEB_LOG_VOLUME}
             o: bind
