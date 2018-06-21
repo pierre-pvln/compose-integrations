@@ -53,6 +53,8 @@ services:
         #environment:
 
 volumes:
+    # volume with persistent data
+    #
     PHP5_DATA_VOLUME:
         driver_opts:
             type: none 
