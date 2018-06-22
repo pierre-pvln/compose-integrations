@@ -1,6 +1,6 @@
 #
 # file:     apache2.yml
-# purpose:  Docker-compose yaml file for test apache2 server
+# purpose:  Docker-compose yaml file for test apache2 image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
@@ -19,7 +19,7 @@ version: "3"
 
 services: 
 
-    apache2server:
+    apache2service:
         #what to build and where to find it
         #
         build: 
@@ -31,7 +31,11 @@ services:
         #for example pvln/rpi3-lvl1-apache2:1.0
         #         
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
-        
+
+        # restart the container under any circumstance
+        #
+        restart: always
+
         # port on host : port on container
         #
         ports:

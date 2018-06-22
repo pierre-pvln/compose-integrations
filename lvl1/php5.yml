@@ -1,6 +1,6 @@
 #
 # file:     php5.yml
-# purpose:  Docker-compose yaml file for test php5 server
+# purpose:  Docker-compose yaml file for test php5 image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #
@@ -30,6 +30,10 @@ services:
         #for example pvln/rpi3-lvl1-php5:1.0
         #         
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
+
+        # restart the container under any circumstance
+        #
+        restart: always    
         
         # port on host : port on container
         # 
@@ -58,10 +62,10 @@ volumes:
     PHP5_DATA_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_PHP5_DATA_VOLUME}
+            device: ${MY_WEB_DATA_VOLUME}
             o: bind
     PHP5_LOG_VOLUME:
         driver_opts:
             type: none 
-            device: ${MY_PHP5_LOG_VOLUME}
+            device: ${MY_WEB_LOG_VOLUME}
             o: bind

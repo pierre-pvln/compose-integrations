@@ -1,6 +1,6 @@
 #
 # file:     baseline.yml
-# purpose:  Docker-compose yaml file for baseline image
+# purpose:  Docker-compose yaml file for test baseline image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
@@ -10,12 +10,13 @@
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
 #           ${MY_BUILDER}
+#           ${MY_VERSION}
 
 version: "3"
 
 services: 
 
-    baseline:
+    baselineservice:
         #what to build and where to find it
         #
         build:
@@ -24,4 +25,8 @@ services:
            
         #how to name and tag the image
         #  
-        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:1.0
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:${MY_VERSION}
+
+        # restart the container under any circumstance
+        #
+        restart: always

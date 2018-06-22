@@ -1,6 +1,6 @@
 #
 # file:     voluntas.yml
-# purpose:  Docker-compose yaml file for voluntas test server
+# purpose:  Docker-compose yaml file for voluntas test image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
@@ -16,7 +16,7 @@ version: "3"
 
 services: 
 
-    webserver:
+    voluntasservice:
         #what to build and where to find it
         #    
         build: 
@@ -53,7 +53,6 @@ services:
 
         # MySQL
         - VOLUNTAS_MYSQL_DATA_VOLUME:/var/lib/mysql
-        
 
         # the MySQL image uses these to create database and users
         #
