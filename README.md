@@ -2,8 +2,9 @@ Docker compose yaml configuration files for various application stacks and integ
 
 Level 0 = Single service in 1 container (using docker)<br>
 Level 1 = Single service in 1 container (using docker-compose)<br>
-Level 2 = Multiple services in 1 container or multiple containers creating 1 service (using docker-compose)<br>
-Level 3 = Containers spread over network (using docker-compose)<br>
+Level 2 = Multiple services in 1 container (using docker-compose)<br>
+Level 3 = Multiple containers creating 1 service (using docker-compose)<br>
+Level 4 = Containers spread over network (using docker-compose)<br>
 
 Below folder structure should be present on the host which runs docker:
 ```
