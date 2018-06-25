@@ -1,5 +1,5 @@
 #
-# file:     mysql55.yml
+# file:     mysql_5.5.yml
 # purpose:  Docker-compose yaml file for test mysql image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
