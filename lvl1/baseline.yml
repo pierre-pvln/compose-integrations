@@ -29,4 +29,4 @@ services:
 
         # restart the container under any circumstance
         #
-        restart: always
+        #restart: always
