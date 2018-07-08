@@ -4,6 +4,7 @@
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #           2018-06-09 added additional variables
+#           2018-07-08 ssl added
 #
 # required: ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
@@ -39,7 +40,8 @@ services:
 
         # Apache2
         - "80:80"
-
+        - "443:443"
+        
         # MySQL
         - "3306:3306"
 
