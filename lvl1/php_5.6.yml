@@ -33,7 +33,7 @@ services:
 
         # restart the container under any circumstance
         #
-        restart: always    
+        #restart: always    
         
         # port on host : port on container
         # 
