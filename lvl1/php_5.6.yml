@@ -17,7 +17,7 @@ version: "3"
 
 services: 
 
-    php5service:
+    php_5.6_service:
 
         #what to build and where to find it
         #
@@ -48,8 +48,8 @@ services:
         #
         volumes:
         # for apache2 layer
-        - PHP5_DATA_VOLUME:/var/www/html
-        - PHP5_LOG_VOLUME:/var/log/apache2
+        - PHP_5.6_DATA_VOLUME:/var/www/html
+        - PHP_5.6_LOG_VOLUME:/var/log/apache2
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
@@ -59,12 +59,12 @@ services:
 volumes:
     # volume with persistent data
     #
-    PHP5_DATA_VOLUME:
+    PHP_5.6_DATA_VOLUME:
         driver_opts:
             type: none 
             device: ${MY_WEB_DATA_VOLUME}
             o: bind
-    PHP5_LOG_VOLUME:
+    PHP_5.6_LOG_VOLUME:
         driver_opts:
             type: none 
             device: ${MY_WEB_LOG_VOLUME}
