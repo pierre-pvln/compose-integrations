@@ -39,7 +39,7 @@ services:
         # port on host : port on container
         #
         ports:
-        -"80:80"
+        - "80:80"
 
         # volume on host : volume in container
         #

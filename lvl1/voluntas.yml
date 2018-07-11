@@ -42,11 +42,11 @@ services:
         ports:
 
         # Apache2
-        -"80:80"
-        -"443:443"
+        - "80:80"
+        - "443:443"
 
         # MySQL
-        -"3306:3306"
+        - "3306:3306"
 
         # volume on host : volume in container
         #

@@ -42,7 +42,7 @@ services:
         #
         ports:
         # for apache2 layer
-        -"80:80"
+        - "80:80"
 
         # volume on host : volume in container
         #
