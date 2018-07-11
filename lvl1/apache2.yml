@@ -29,7 +29,7 @@ services:
         #how to name and tag the image
         #
         #for example pvln/rpi3-lvl1-apache2:1.0
-        #         
+        #
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:${MY_VERSION}
 
         # restart the container under any circumstance
@@ -64,4 +64,4 @@ volumes:
         driver_opts:
             type: none 
             device: ${MY_WEB_LOG_VOLUME}
-            o: bind        
+            o: bind

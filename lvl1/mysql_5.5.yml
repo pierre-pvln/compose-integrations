@@ -17,23 +17,23 @@ services:
 
     mysql55service:
         #what to build and where to find it
-        #    
+        #
         build: 
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: ${MY_DOCKERFILE}
-            
+
         #how to name and tag the image
         #
         #for example pvln/rpi3-lvl1-mysql:1.0
-        #        
+        #
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:${MY_VERSION}
 
         # restart the container under any circumstance
         #
-        restart: always        
+        restart: always
 
         # port on host : port on container
-        #        
+        #
         ports:
 
         # Apache2
@@ -60,7 +60,7 @@ services:
         - MYSQL_DATABASE=${MY_SQL_DATABASE}
         - MYSQL_USER=${MY_SQL_USER}
         - MYSQL_PASSWORD=${MY_SQL_USER_PW}
-          
+
 volumes:
     # volume with persistent data
     #

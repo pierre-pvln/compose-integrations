@@ -21,29 +21,29 @@ services:
 
         #what to build and where to find it
         #
-        build: 
+        build:
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: ${MY_DOCKERFILE}
-            
+
         #how to name and tag the image
         #
         #for example pvln/rpi3-lvl1-php5.6:1.0
-        #         
+        #
         image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:${MY_VERSION}
 
         # restart the container under any circumstance
         #
-        restart: always    
-        
+        #restart: always
+
         # port on host : port on container
-        # 
-        # ATTENTION: if ports are defined in lower level containers, 
+        #
+        # ATTENTION: if ports are defined in lower level containers,
         #            they have to be defined again in this container
         #
         ports:
         # for apache2 layer
-        - "80:80"    
-        
+        - "80:80"
+
         # volume on host : volume in container
         #
         volumes:
@@ -53,7 +53,7 @@ services:
 
         # values to pass to the container as environment variable
         # only available when container is run, not when container is build
-        #        
+        #
         #environment:
 
 volumes:
