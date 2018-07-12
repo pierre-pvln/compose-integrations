@@ -1,17 +1,17 @@
 #
 # file:     php_5.6.yml
-# purpose:  Docker-compose yaml file for test php5 image
+# purpose:  Docker-compose yaml file for test php 5.6 image
 # author:   Pierre Veelen <pierre@pvln.nl>
 # version:  2017-10-01 initial version
 #
-# required environment variables: 
+# required environment variables:
 #           ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
 #           ${MY_LEVEL}
 #           ${MY_BUILDER}
-#           ${MY_PHP5_LOG_VOLUME}
-#           ${MY_PHP5_DATA_VOLUME}
+#           ${MY_WEB_LOG_VOLUME}
+#           ${MY_WEB_DATA_VOLUME}
 
 version: "3"
 
