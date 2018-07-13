@@ -1,0 +1,89 @@
+#
+# file:     mysql_5.7_tst1.yml
+# purpose:  Docker-compose yaml file for test mysql image
+# author:   Pierre Veelen <pierre@pvln.nl>
+# version:  2017-10-01 initial version
+#
+# required environment variables:
+#           ${MY_PLATFORM}
+#           ${MY_CONTAINER_NAME}
+#           ${MY_DOCKERFILE}
+#           ${MY_LEVEL}
+#           ${MY_BUILDER}
+#           ${MY_WEB_LOG_VOLUME}
+#           ${MY_WEB_DATA_VOLUME}
+#           ${MY_MYSQL_DATA_VOLUME}
+
+version: "3"
+
+services: 
+
+    mysql_5.7_service:
+
+        #what to build and where to find it
+        #
+        build: 
+            context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
+            dockerfile: ${MY_DOCKERFILE}
+
+        #how to name and tag the image
+        #
+        #for example pvln/rpi3-lvl1-mysql:1.0
+        #
+        image: ${MY_BUILDER}/${MY_PLATFORM}-${MY_LEVEL}-${MY_CONTAINER_NAME}:${MY_VERSION}
+
+        # restart the container under any circumstance
+        #
+        #restart: always
+
+        # port on host : port on container
+        #
+        # ATTENTION: if ports are defined in lower level containers,
+        #            they have to be defined again in this container
+        #
+                                                                   
+        ports:
+        # for apache2 layer
+        - "80:80"
+
+        # MySQL
+        - "3306:3306"
+
+        volumes:
+
+        # for apache2 layer
+        - MYSQL_WEB_DATA_VOLUME:/var/www/html
+        - MYSQL_WEB_LOG_VOLUME:/var/log/apache2
+
+        # MySQL
+        - MYSQL_DATA_VOLUME:/var/lib/mysql
+
+        # values to pass to the container as environment variable
+        # only available when container is run, not when container is build
+        #
+        # the MySQL image uses these to create database and users
+        #
+        environment: 
+        - MYSQL_ROOT_PASSWORD=${MY_SQL_ROOT_PW}
+        - MYSQL_DATABASE=${MY_SQL_DATABASE}
+        - MYSQL_USER=${MY_SQL_USER}
+        - MYSQL_PASSWORD=${MY_SQL_USER_PW}
+
+volumes:
+    # volume with persistent data
+    #
+    MYSQL_WEB_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_DATA_VOLUME}
+            o: bind
+    MYSQL_WEB_LOG_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_WEB_LOG_VOLUME}
+            o: bind
+    MYSQL_DATA_VOLUME:
+        driver_opts:
+            type: none 
+            device: ${MY_MYSQL_DATA_VOLUME}
+            o: bind
