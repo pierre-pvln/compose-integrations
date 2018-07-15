@@ -6,11 +6,15 @@
 #           2018-06-09 added additional variables
 #           2018-07-08 ssl added
 #
-# required: ${MY_PLATFORM}
+
+# required environment variables:                                
+#           ${MY_PLATFORM}
 #           ${MY_CONTAINER_NAME}
 #           ${MY_DOCKERFILE}
-#           ${MY_BUILDER}
 #           ${MY_LEVEL}
+#           ${MY_BUILDER}
+#           ${MY_WEB_LOG_VOLUME}
+#           ${MY_WEB_DATA_VOLUME}
 #           ${MY_MYSQL_DATA_VOLUME}
 
 version: "3"
@@ -18,6 +22,7 @@ version: "3"
 services: 
 
     voluntasservice:
+
         #what to build and where to find it
         #
         build:
@@ -40,8 +45,7 @@ services:
         #            they have to be defined again in this container
         #
         ports:
-
-        # Apache2
+        # for apache2 layer
         - "80:80"
         - "443:443"
 
@@ -52,13 +56,16 @@ services:
         #
         volumes:
 
-        # Apache2
+        # for apache2 layer
         - VOLUNTAS_WEB_DATA_VOLUME:/var/www/html
         - VOLUNTAS_WEB_LOG_VOLUME:/var/log/apache2
 
         # MySQL
         - VOLUNTAS_MYSQL_DATA_VOLUME:/var/lib/mysql
 
+        # values to pass to the container as environment variable
+        # only available when container is run, not when container is build
+        #
         # the MySQL image uses these to create database and users
         #
         environment:

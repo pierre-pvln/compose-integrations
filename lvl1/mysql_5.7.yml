@@ -22,7 +22,7 @@ services:
 
         #what to build and where to find it
         #
-        build: 
+        build:
             context: ../../services/${MY_PLATFORM}/${MY_CONTAINER_NAME}
             dockerfile: ${MY_DOCKERFILE}
 
@@ -49,6 +49,8 @@ services:
         # MySQL
         - "3306:3306"
 
+        # volume on host : volume in container
+        #
         volumes:
 
         # for apache2 layer
@@ -63,11 +65,11 @@ services:
         #
         # the MySQL image uses these to create database and users
         #
-        environment: 
-        - MYSQL_ROOT_PASSWORD=${MY_SQL_ROOT_PW}
-        - MYSQL_DATABASE=${MY_SQL_DATABASE}
-        - MYSQL_USER=${MY_SQL_USER}
-        - MYSQL_PASSWORD=${MY_SQL_USER_PW}
+        environment:
+        - MYSQL_ROOT_PASSWORD=${MY_MYSQL_ROOT_PW}
+        - MYSQL_DATABASE=${MY_MYSQL_DATABASE}
+        - MYSQL_USER=${MY_MYSQL_USER}
+        - MYSQL_PASSWORD=${MY_MYSQL_USER_PW}
 
 volumes:
     # volume with persistent data
